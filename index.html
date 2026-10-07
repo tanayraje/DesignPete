@@ -91,13 +91,13 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 .stamp{font:1.15rem var(--f-mark);background:var(--ivory);color:var(--ink);border:2px solid var(--ink);padding:.15em .7em;border-radius:6px;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--ink)}
 .hero-est{
   right:clamp(170px,13vw,250px);
-  top:140px;
+  top:130px;
   z-index:3 !important;
 }
 
 .hero-street{
   right:clamp(120px,13vw,200px);
-  top:180px;
+  top:170px;
   z-index:8 !important;
   transform:rotate(3deg);
 }
@@ -121,7 +121,16 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 .w-copy h1 span{display:inline;background:var(--ivory);color:var(--ink);padding:.01em .2em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .w-copy h1 span:nth-child(2){background:var(--aqua)}
 @keyframes paint{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-.w-sub{display:inline-block;margin:5rem 0 1rem;max-width:38ch;background:var(--ivory);padding:.6rem .85rem;font-weight:600;border:2px solid var(--ink);border-radius:10px}
+.w-sub{
+  display:inline-block;
+  margin:1.1rem 0 1rem;
+  max-width:38ch;
+  background:var(--ivory);
+  padding:.6rem .85rem;
+  font-weight:600;
+  border:2px solid var(--ink);
+  border-radius:10px
+}
 .w-cta{display:flex;gap:10px;flex-wrap:wrap}
 @media(max-width:760px){.w-mark{display:none}.w-sub{display:none}.w-copy{top:76px}.w-copy h1{font-size:clamp(2.2rem,10.5vw,3.4rem)}}
 
