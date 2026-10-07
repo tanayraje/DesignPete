@@ -47,7 +47,7 @@ h1,h2,h3{margin:0}
 .hdr.solid{background:var(--ivory);box-shadow:0 2px 0 var(--ink)}
 .hdr-in{display:flex;align-items:center;gap:clamp(8px,2vw,22px);height:56px;padding:0 clamp(12px,3vw,32px)}
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 1.75rem/1 var(--f-disp);letter-spacing:.01em;color:var(--ink);margin-right:auto;background:var(--ivory);padding:.12em .45em .12em .3em;border:2px solid var(--ink);border-radius:8px;transform:rotate(-1.2deg)}
-svgsvg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
+svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 .logo .mark{height:38px;width:auto;margin:-2px 0}
 .mark.mini{width:44px;margin-bottom:8px;filter:drop-shadow(3px 3px 0 var(--m-shadow))}
 .mark.foot{width:104px;margin-bottom:26px}
@@ -423,7 +423,7 @@ textarea.fld{min-height:130px;resize:vertical}
 
 <header class="hdr" id="hdr">
   <div class="hdr-in">
-    <a class="logo" href="#top" aria-label="Designpete, back to top"><svg class="mark " viewBox="0 0 226.1 249.36" role="img" aria-label="Designpete logomark"><use href="#dp-mark"/></svg><span>DesignPete</span></a>
+    <a class="logo" href="#top" aria-label="Designpete, back to top"><svg class="mark " viewBox="0 0 226.1 249.36" role="img" aria-label="Designpete logomark"><use href="#dp-mark"/></svg><span>designpete</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#map">The map</a><a href="#journey">Journey</a><a href="#ideas">Ideas</a><a href="#people">People</a><a href="#partners">Partners</a>
     </nav>
@@ -851,7 +851,7 @@ function buildCollage(){
   // flipped autos need their drive direction: handled by .rev; add graphic stamps and stars
   const stamp=document.createElement('div');stamp.className='deco stamp';stamp.textContent='est. 150+ years';stamp.style.cssText='left:46%;bottom:49%';
   lb.appendChild(stamp);
-  const st2=document.createElement('div');st2.className='deco stamp';st2.textContent='650 m of street';st2.style.cssText='left:70%bottom:61%;transform:rotate(3deg);background:var(--aqua)';
+  const st2=document.createElement('div');st2.className='deco stamp';st2.textContent='650 m of street';st2.style.cssText='left:78%;bottom:61%;transform:rotate(3deg);background:var(--aqua)';
   lb.appendChild(st2);
   [[41,63],[91,56],[24,52]].forEach((p,i)=>{
     const s=document.createElement('div');s.className='deco';s.style.cssText='left:'+p[0]+'%;bottom:'+p[1]+'%';
