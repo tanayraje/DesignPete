@@ -91,20 +91,22 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 .stamp{font:1.15rem var(--f-mark);background:var(--ivory);color:var(--ink);border:2px solid var(--ink);padding:.15em .7em;border-radius:6px;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--ink)}
 .hero-est{
   left:0;
-  top:72px;
-  z-index:3;
+  top:58px;
+  z-index:3 !important;
 }
 
 .hero-street{
   left:0;
-  top:390px;
-  z-index:8;
+  top:350px;
+  z-index:8 !important;
   transform:rotate(3deg);
 }
 .star{width:34px;height:34px;color:var(--ink);animation:twinkle 2.4s ease-in-out infinite alternate}
 @keyframes twinkle{from{transform:scale(.8) rotate(0)}to{transform:scale(1.15) rotate(25deg)}}
-.w-copy{position:absolute;left:clamp(14px,4vw,64px);top:84px;max-width:min(940px,92vw);pointer-events:none}
+.w-copy{position:absolute;left:clamp(14px,4vw,64px);top:84px;max-width:min(940px,92vw);pointer-events:none;z-index:7}
 .w-copy>*{position:relative;z-index:4}
+.w-copy .hero-est{position:absolute;z-index:3 !important}
+.w-copy .hero-street{position:absolute;z-index:8 !important}
 .w-copy .w-sub,.w-copy .w-cta{z-index:8}.w-cta{pointer-events:auto}
 .w-kicker{display:inline-block;font:1.15rem var(--f-mark);background:var(--ivory);border:2px solid var(--ink);padding:.1em .7em;border-radius:6px;margin:0 0 14px;transform:rotate(-1.5deg);box-shadow:3px 3px 0 var(--ink)}
 .w-copy h1{font:800 clamp(2.4rem,6.2vw,5.9rem)/1.0 var(--f-disp);letter-spacing:.003em;animation:paint 1.1s .2s cubic-bezier(.7,0,.2,1) both}
@@ -113,7 +115,7 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 @keyframes paint{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .w-sub{display:inline-block;margin:1.1rem 0 1rem;max-width:38ch;background:var(--ivory);padding:.6rem .85rem;font-weight:600;border:2px solid var(--ink);border-radius:10px}
 .w-cta{display:flex;gap:10px;flex-wrap:wrap}
-@media(max-width:760px){.w-mark{display:none}.w-sub{display:none}.w-copy{top:76px}.w-scroll{display:none}.w-copy h1{font-size:clamp(2.2rem,10.5vw,3.4rem)}}
+@media(max-width:760px){.w-mark{display:none}.w-sub{display:none}.w-copy{top:76px}.w-copy h1{font-size:clamp(2.2rem,10.5vw,3.4rem)}}
 
 /* map section */
 .mapsec{--m-paper:#FEFAE8;--m-ink:#14185F;--m-card:#fff;--m-shadow:#14185F;--m-line:rgba(20,24,95,.3);
