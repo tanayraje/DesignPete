@@ -89,6 +89,18 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 @keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-14px) rotate(3deg)}}
 .deco{position:absolute;pointer-events:none}
 .stamp{font:1.15rem var(--f-mark);background:var(--ivory);color:var(--ink);border:2px solid var(--ink);padding:.15em .7em;border-radius:6px;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--ink)}
+.hero-est{
+  left:0;
+  top:72px;
+  z-index:3;
+}
+
+.hero-street{
+  left:0;
+  top:390px;
+  z-index:8;
+  transform:rotate(3deg);
+}
 .star{width:34px;height:34px;color:var(--ink);animation:twinkle 2.4s ease-in-out infinite alternate}
 @keyframes twinkle{from{transform:scale(.8) rotate(0)}to{transform:scale(1.15) rotate(25deg)}}
 .w-copy{position:absolute;left:clamp(14px,4vw,64px);top:84px;max-width:min(940px,92vw);pointer-events:none}
@@ -101,10 +113,6 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 @keyframes paint{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .w-sub{display:inline-block;margin:1.1rem 0 1rem;max-width:38ch;background:var(--ivory);padding:.6rem .85rem;font-weight:600;border:2px solid var(--ink);border-radius:10px}
 .w-cta{display:flex;gap:10px;flex-wrap:wrap}
-.w-scroll{position:absolute;z-index:7;right:calc(clamp(14px,4vw,64px) + clamp(86px,9vw,140px) + 18px);top:104px;font:1rem var(--f-mark);background:var(--ink);color:var(--ivory);padding:.35em .9em;border-radius:999px;text-decoration:none;transform:rotate(3deg)}
-.w-stat{position:absolute;z-index:8;left:clamp(20px,5vw,64px);top:320px;color:var(--ink);display:flex;flex-direction:column;line-height:.9}
-.w-stat strong{font:800 clamp(3.5rem,7vw,6rem) var(--f-disp)}
-.w-stat span{font:1rem var(--f-mark);margin-top:8px}
 @media(max-width:760px){.w-mark{display:none}.w-sub{display:none}.w-copy{top:76px}.w-scroll{display:none}.w-copy h1{font-size:clamp(2.2rem,10.5vw,3.4rem)}}
 
 /* map section */
@@ -447,10 +455,8 @@ textarea.fld{min-height:130px;resize:vertical}
       <button class="btn aqua" data-flow-pick>Join in</button>
     </div>
   </div>
-  <div class="stage front" id="stageFront" aria-hidden="true"></div>
+ <div class="stage front" id="stageFront" aria-hidden="true"></div>
 <div class="w-mark"><svg class="mark " viewBox="0 0 226.1 249.36" role="img" aria-label="Designpete logomark"><use href="#dp-mark"/></svg></div>
-<div class="w-stat"><strong>650 M</strong><span>OF STREET</span></div>
-<a class="w-scroll" href="#map">Scroll to the map</a>
 </section>
 
 <section class="mapsec" id="map" data-time="day" aria-label="Interactive 3D map of Veerapillai Street">
@@ -853,10 +859,18 @@ function buildCollage(){
     groups[c.g].appendChild(w);
   });
   // flipped autos need their drive direction: handled by .rev; add graphic stamps and stars
-  const stamp=document.createElement('div');stamp.className='deco stamp';stamp.textContent='est. 150+ years';stamp.style.cssText='left:46%;bottom:49%';
-  lb.appendChild(stamp);
-  const st2=document.createElement('div');st2.className='deco stamp';st2.textContent='650 m of street';st2.style.cssText='left:70%;bottom:61%;transform:rotate(3deg);background:var(--aqua)';
-  lb.appendChild(st2);
+  const copy=$('.w-copy');
+
+const stamp=document.createElement('div');
+stamp.className='deco stamp hero-est';
+stamp.textContent='est. 150+ years';
+copy.appendChild(stamp);
+
+const st2=document.createElement('div');
+st2.className='deco stamp hero-street';
+st2.textContent='650 m of street';
+st2.style.background='var(--aqua)';
+copy.appendChild(st2);
   [[41,63],[91,56],[24,52]].forEach((p,i)=>{
     const s=document.createElement('div');s.className='deco';s.style.cssText='left:'+p[0]+'%;bottom:'+p[1]+'%';
     s.innerHTML='<svg class="star" style="animation-delay:'+(i*.7)+'s" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.2 8.8L23 12l-8.8 2.2L12 23l-2.2-8.8L1 12l8.8-2.2z"/></svg>';
