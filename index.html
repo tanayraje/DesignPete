@@ -91,13 +91,13 @@ svg.mark{display:block;aspect-ratio:226.1/249.36;height:auto}
 .stamp{font:1.15rem var(--f-mark);background:var(--ivory);color:var(--ink);border:2px solid var(--ink);padding:.15em .7em;border-radius:6px;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--ink)}
 .hero-est{
   right:clamp(170px,13vw,250px);
-  top:130px;
-  z-index:8!important;
+  top:135px;
+  z-index:6!important;
 }
 
 .hero-street{
   right:clamp(120px,13vw,200px);
-  top:170px;
+  top:175px;
   z-index:9 !important;
   transform:rotate(3deg);
 }
@@ -307,6 +307,37 @@ input[type=range]{width:100px;accent-color:var(--ultra)}
 .pillar[aria-expanded="true"] .pn{writing-mode:horizontal-tb;transform:none}
 .pillar .pt{max-height:0;opacity:0;overflow:hidden;font:500 1.15rem/1.45 var(--f-serif);transition:opacity .4s .15s;width:min(36ch,100%)}
 .pillar[aria-expanded="true"] .pt{max-height:300px;opacity:1}
+.pillar-img{
+  width:100%;
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,.08) 0 10px,
+      transparent 10px 20px
+    );
+  border:2px solid var(--ink);
+  color:var(--ink);
+  font:700 1.1rem var(--f-mark);
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition:opacity .4s .1s, max-height .55s ease;
+}
+
+.pillar-img span{
+  border:2px solid var(--ink);
+  padding:.3rem .7rem;
+  background:var(--ivory);
+}
+
+.pillar[aria-expanded="true"] .pillar-img{
+  opacity:1;
+  max-height:180px;
+}
 .pillar::after{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 10px,transparent 10px 20px)}
 @media(max-width:760px){
   .pillars{flex-direction:column;height:auto}
@@ -772,11 +803,11 @@ const STAGES=[
  {name:'Live',state:'next',blurb:'Veerapillai Street opens as the first Designpete. The next pete can follow, with its own flavour.',done:[],next:['Open the street','Take the lessons to the next Designpete']}
 ];
 const LENSES=[
- {name:'Commercial',color:'#F0C847',dk:true,text:'Find new ways to earn: fresh revenue and livelihood for the people who work here.'},
- {name:'Creative',color:'#E8318A',text:'Trigger imagination and give every sense something to enjoy.'},
- {name:'Cultural',color:'#0FA68E',text:'Unlock the heritage of the place so locals and visitors can feel the culture.'},
- {name:'Community',color:'#3D4DF0',text:'Add modern conveniences and a platform where the neighbourhood can meet and take part.'},
- {name:'Conscious',color:'#7BC043',dk:true,text:'Start next-generation, responsible practices and civic solutions that last.'}
+ {name:'Commercial',color:'#F0C847',dk:true,image:'images/value-placeholder.jpg',text:'Find new ways to earn: fresh revenue and livelihood for the people who work here.'},
+ {name:'Creative',color:'#E8318A',image:'images/value-placeholder.jpg',text:'Trigger imagination and give every sense something to enjoy.'},
+ {name:'Cultural',color:'#0FA68E',image:'images/value-placeholder.jpg',text:'Unlock the heritage of the place so locals and visitors can feel the culture.'},
+ {name:'Community',color:'#3D4DF0',image:'images/value-placeholder.jpg',text:'Add modern conveniences and a platform where the neighbourhood can meet and take part.'},
+ {name:'Conscious',color:'#7BC043',dk:true,image:'images/value-placeholder.jpg',text:'Start next-generation, responsible practices and civic solutions that last.'}
 ];
 const FLOWS={
  story:{name:'Share a story',sub:'A memory, a regular, a sound or a smell.',color:'#E8318A',steps:[
@@ -1908,7 +1939,15 @@ $('#soundBtn').addEventListener('click',()=>{
 })();
 (function(){
   const host=$('#pillars');
-  host.innerHTML=LENSES.map((l,i)=>'<button class="pillar'+(l.dk?' dk':'')+'" style="--c:'+l.color+'" aria-expanded="'+(i===0)+'"><span class="pn">'+l.name+'</span><span class="pt">'+esc(l.text)+'</span></button>').join('');
+  host.innerHTML=LENSES.map((l,i)=>`
+  <button class="pillar${l.dk?' dk':''}" style="--c:${l.color}" aria-expanded="${i===0}">
+    <span class="pn">${l.name}</span>
+    <div class="pillar-img">
+  <span>IMAGE</span>
+</div>
+    <span class="pt">${esc(l.text)}</span>
+  </button>
+`).join('');
   host.addEventListener('click',e=>{const b=e.target.closest('.pillar');if(!b)return;$$('.pillar',host).forEach(x=>x.setAttribute('aria-expanded',String(x===b)));});
 })();
 function avatar(o,alt){
